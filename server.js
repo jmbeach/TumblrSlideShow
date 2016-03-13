@@ -20,7 +20,7 @@ var express = require("express"),
     passport = require('passport'),
     TumblrStrategy = require('passport-tumblr').Strategy,
     LocalStrategy = require('passport-local').Strategy,
-    User = require('./User');
+    User = require('./user');
 //#endregion
 
 //#region GLOBAL_VARIABLES
