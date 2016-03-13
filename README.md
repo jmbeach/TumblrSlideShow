@@ -1,7 +1,7 @@
 ﻿# Tumblr Slideshow Web-App
 
 ## About
-A Node.js server / application which displays photos from a tumblr user's dashboard as a slideshow.
+A Node.js application which displays photos from a tumblr user's dashboard as a slideshow. Completely free to use and extend.
 
 ![Example slideshow](http://i.imgur.com/UUfIqYL.png)
 
