@@ -1,5 +1,6 @@
 ﻿# Tumblr Slideshow Web-App
 
+![Example slideshow](http://i.imgur.com/UUfIqYL.png)
 
 ## About
 A Node.js server / application which displays photos from a tumblr user's dashboard as a slideshow.
