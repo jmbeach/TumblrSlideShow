@@ -33,8 +33,8 @@ var port = process.env.PORT || parseInt(config.get("Debug.port")), // the proces
     request_token_url = 'http://www.tumblr.com/oauth/request_token', // for requesting tumblr access
     access_token_url = 'http://www.tumblr.com/oauth/access_token', // for requesting tumblr auth
     authorize_url = 'http://www.tumblr.com/oauth/authorize', // for requesting tumblr auth
-    appKey = config.get("Tumblr.appKey"), // finds your app key in the default.json file in config foler (see config readme.txt)
-    appSecret = config.get("Tumblr.appSecret"); // finds your app secret in the default.json file
+    appKey = process.env.TUMBLR_KEY || config.get("Tumblr.appKey"), // finds your app key in the default.json file in config foler (see config readme.txt)
+    appSecret = process.env.TUMBLR_SECRET || config.get("Tumblr.appSecret"); // finds your app secret in the default.json file
 //#endregion
 
 //#region MODULE_CONFIGURATIONS
