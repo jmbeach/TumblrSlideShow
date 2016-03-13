@@ -1,0 +1,52 @@
+﻿<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <link rel="stylesheet" href="css/index.css" type="text/css">
+    <link rel="stylesheet" href="css/style.css" type="text/css">
+    <link href="css/jquery-ui.css" rel="stylesheet" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script src="js/jquery-ui.js"></script>
+    <!-- // <script src="js/bootstrap.js"></script> -->
+    <script type="text/javascript" src="js/easing.js"></script>
+    <script src="js/jquery.rs.slideshow.js"></script>
+    <!-- Load the script after AngularJS -->
+
+
+    <script src="js/notify.min.js"></script>
+    <script src="js/jquery.adaptive-backgrounds.js"></script>
+    <script src="js/sweep.min.js"></script>
+    <script src="js/jquery.sidebar.js"></script>
+    <meta charset="utf-8" />
+    <title>TumblrSlideShow</title>
+</head>
+<body>
+    <div adaptive-background>
+        <div id="notifications" style="position:absolute;top:90%;height:100px;">
+
+        </div>
+        <div id="maximage" class="rs-slideshow" width="100%" height="100%">
+            <div id="divTextHolder"></div>
+            <button id="btnMenu" data-action="toggle"></button>
+            <div id="sidebar" >
+                <button type="button" id="btnSub">Subscribe original blog</button>
+                <button type="button" id="btnUnSub">Unsub blog</button>
+                <button type="button" id="btnPrev">Previous</button>
+                <button type="button" id="btnNext">Next</button>
+                <button type="button" id="btnPlayPause">Play/Pause</button>
+                <button type="button" id="btnLike">Like post</button>
+                <button type="button" id="btnReblog">Reblog post</button>
+                <div class="sidebarDiv">Show captions: <input type="checkbox" id="cbShowCaption" checked /></div>
+                <div id="slider"></div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        
+    </script>
+    <script src="js/tumblrDataRetriever.js"></script>
+    <script src="js/index.js"></script>
+</body>
+</html>

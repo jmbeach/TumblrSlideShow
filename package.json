@@ -1,0 +1,47 @@
+{
+  "name": "tumblrslideshow",
+  "version": "0.10.4",
+  "private": true,
+  "scripts": {
+    "start": "node ./bin/www"
+  },
+  "dependencies": {
+    "bcrypt-nodejs": "0.0.3",
+    "body-parser": "^1.13.3",
+    "config": "^1.14.0",
+    "connect-flash": "^0.1.1",
+    "content-disposition": "^0.5.0",
+    "cookie-parser": "^1.3.3",
+    "cors": "^2.5.3",
+    "crc": "^3.2.1",
+    "debug": "^2.1.1",
+    "depd": "^1.0.0",
+    "express": "^4.13.2",
+    "express-session": "^1.11.3",
+    "forwarded": "^0.1.0",
+    "jade": "^1.9.1",
+    "morgan": "^1.5.1",
+    "mysql": "^2.5.4",
+    "negotiator": "^0.5.0",
+    "oauth": "^0.9.12",
+    "passport": "^0.2.1",
+    "passport-local": "^1.0.0",
+    "passport-tumblr": "^0.1.2",
+    "serve-favicon": "^2.2.0",
+    "tumblr.js": "0.0.4",
+    "util": "^0.10.3"
+  },
+  "description": "",
+  "main": "node.js",
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "https://jmbeach1@bitbucket.org/jmbeach1/tumblrslideshow.git"
+  },
+  "keywords": [
+    "tumblr",
+    "slideshow"
+  ],
+  "author": "Jared Beach",
+  "license": "ISC"
+}
