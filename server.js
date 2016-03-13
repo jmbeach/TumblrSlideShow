@@ -48,6 +48,7 @@ var allowCrossDomain = function (req, res, next) {
 // Files in the public folder are served staticly
 app.all('*', function (req, res, next) {
     app.use(express.static(__dirname + '/public'));
+	app.use('/bower_components', express.static(process.env.PWD + '/bower_components'));
     next();
 });
 // Creates user sessions (not really implemented yet)
@@ -59,9 +60,35 @@ app.use(bodyParser.json());
 app.use(bodyParser.json({ type: 'application/vnd.api+json' }));
 app.use(flash());
 
-// config oauth
 var server = app.listen(port, function () {
     console.log('Listening on port %d', server.address().port);
+});
+// Makes sure user is logged in when they access a page
+function loggedIn(req, res, next) {
+    console.log("checking for user");
+    if (typeof req._passport.session.user == 'undefined') {
+        console.log("no user found. redirecting...");
+        //res.redirect('/auth/tumblr');
+        res.send(false);
+    } else if (req._passport.session.user.isGeneric) {
+        console.log("Logging out generic user and sending to login.");
+        req.logout();
+        res.send(false);
+    }else {
+		res.send(true);
+    }
+};
+app.get("(/[^(auth)][a-zA-Z(%20)]+)+", function (req, res, next) {
+    console.log(req.url.toLowerCase());
+	switch(req.url.toLowerCase()) {
+		case '/loggedin':
+			loggedIn(req,res,next);
+			break;
+		default:
+			console.log("sending home page indirectly");
+			res.sendFile(process.env.PWD + '/public/index.html');
+			break;
+	}
 });
 console.log('callbackURL: ', callbackURL);
 // config passport
@@ -139,41 +166,27 @@ passport.deserializeUser(function (user, done) {
 
 //#region LOGIN_METHODS
 // Makes sure user is logged in when they access a page
-function loggedIn(req, res, next) {
-    console.log("checking for user");
-    if (typeof req._passport.session.user == 'undefined') {
-        console.log("no user found. redirecting...");
-        //res.redirect('/auth/tumblr');
-        res.redirect('/login');
-    } else if (req._passport.session.user.isGeneric) {
-        console.log("Logging out generic user and sending to login.");
-        req.logout();
-        res.redirect('/login');
-    }else {
-        next();
-    }
-}
 //#endregion
 
 //#region REQUESTS
 // Redirects to login if not logged in.
 // Otherwise displays default slidehshow page
-app.get('/', loggedIn, function (req, res) {
-    console.log("logged in.");
-    res.sendFile(__dirname + '/public/index.html');
-});
+// app.get('/', loggedIn, function (req, res) {
+//     console.log("logged in.");
+//     res.sendFile(__dirname + '/public/index.html');
+// });
 // Watch slideshow for specific user profile
-app.get('/user-show', function (req, res) {
-    console.log("Doing specific user slide show");
-    var user = new User({
-        isGeneric: true,
-        blogName: req.query.blogName
-    });
-    req._passport.session.user = user;
-    res.sendFile(__dirname + '/public/index.html');
-});
-app.get('/auth/tumblr',
-    passport.authenticate('tumblr', {}));
+// app.get('/user-show', function (req, res) {
+//     console.log("Doing specific user slide show");
+//     var user = new User({
+//         isGeneric: true,
+//         blogName: req.query.blogName
+//     });
+//     req._passport.session.user = user;
+//     res.sendFile(__dirname + '/public/index.html');
+// });
+// app.get('/auth/tumblr',
+//     passport.authenticate('tumblr', {}));
 
 app.get('/auth/tumblr/callback',
     passport.authenticate('tumblr', {
@@ -190,32 +203,15 @@ app.get('/auth/tumblr/callback',
     }
 });
 // display login page
-app.get('/login', function (req, res) {
-    //    login(req, res);
-    // make sure user isn't already logged in
-    if (typeof req._passport.session.user != 'undefined') {
-        console.log("user already logged in. sending home.");
-        res.redirect('/');
-    }
-    res.sendFile(__dirname + '/public/login.html');
-});
-
-// Probably going to delte. Had local registration, but I don't
-// want it anymore
-app.get('/register', function (req, res) {
-    // make sure user is not registered and supposed to be here
-    if (typeof req._passport.session.user == 'undefined') {
-        console.log("user not authenticated. sending to login.");
-        res.redirect('/login');
-    }
-    if (req._passport.session.user.registered) {
-        console.log("user already logged in. Sending home.");
-        res.redirect("/");
-    }
-    // should only be sent her if tumblr auth successful
-    // serve up a password field and wait for a post.
-    res.sendFile(__dirname + '/public/register.html');
-});
+// app.get('/login', function (req, res) {
+//     //    login(req, res);
+//     // make sure user isn't already logged in
+//     if (typeof req._passport.session.user != 'undefined') {
+//         console.log("user already logged in. sending home.");
+//         res.redirect('/');
+//     }
+//     res.sendFile(__dirname + '/public/login.html');
+// });
 
 // Called from index js. Gets tumblr user slideshow data
 app.get('/tData', function (req, res) {

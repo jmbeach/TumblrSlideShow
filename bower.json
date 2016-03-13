@@ -1,0 +1,42 @@
+{
+  "name": "tumblrslideshow",
+  "description": "Dependencies of tumblrslideshow",
+  "main": "server.js",
+  "authors": [
+    "Jared Beach"
+  ],
+  "license": "MIT",
+  "keywords": [
+    "tumblr",
+    "slideshow"
+  ],
+  "homepage": "https://github.com/jmbeach/TumblrSlideshow",
+  "moduleType": [],
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "Materialize": "materialize#~0.97.5",
+    "jquery": "~2.1.4",
+    "jquery-ui": "~1.11.4",
+    "angular": "~1.4.3",
+    "jquery-color": "~2.1.2",
+    "angular-route": "^1.5.0",
+    "angular-animate": "~1.4.3",
+    "ui-router": "~0.2.15",
+    "toastr": "~2.1.2",
+    "angular-recaptcha": "~2.2.5",
+    "easing": "*",
+    "notifyjs": "notifyjs/notifyjs#^0.4.0",
+    "jquery.adaptive-backgrounds.js": "adaptive.background#^1.0.3",
+    "sweep": "^1.2.2",
+    "jquery-sidebar": "jillix/jQuery-sidebar#^3.3.2"
+  },
+  "resolutions": {
+    "angular": "~1.4.3"
+  }
+}

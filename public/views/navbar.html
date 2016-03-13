@@ -1,0 +1,20 @@
+<nav ng-controller="nav as nav" style="position:fixed;top:0;z-index:99999999">
+    <div class="nav-wrapper container">
+        <a href="#!" class="brand-logo">Tumblr Slideshow</a>
+		<a href="#" data-activates="sidebarNav" class="button-collapse"><i class="material-icons">menu</i></a>
+        <ul class="right hide-on-med-and-down">
+            <li ng-repeat="page in nav.pages" ng-class={'active':page.isActive()}>
+                <a href="{{page.url}}">{{page.name}}</a>
+            </li>
+        </ul>
+		<ul class="side-nav" id="sidebarNav">
+			<li ng-repeat="page in nav.pages" ng-class={'active':page.isActive()}>
+                <a href="{{page.url}}">{{page.name}}</a>
+            </li>
+		</ul>
+    </div>
+</nav>
+
+<script>
+$(".button-collapse").sideNav();
+</script>

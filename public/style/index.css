@@ -1,0 +1,111 @@
+canvas-holder input[type=button] {
+  min-width: 100px;
+  height: 40px;
+  background: linear-gradient(0, rgba(240, 240, 240, 0.7), rgba(243, 148, 255, 0.9));
+  border-bottom: 2px solid rgb(32, 69, 145);
+  border-right: 2px solid gray;
+}
+.canvas-holder [type=button]:hover {
+  background: linear-gradient(0, rgb(240, 240, 240), rgb(142, 255, 252));
+}
+.canvas-holder {
+  background: black;
+  position: relative;
+}
+.filtered {
+  background: rgba(0, 0, 0, 0.42);
+  color: white;
+}
+.popover-content, .popover-title {
+  color: #333
+}
+#blurb {
+  padding: 10px
+}
+.close {
+  position: absolute;
+  right: 10px;
+  top: 10px
+}
+.view-animate-container {
+  position: relative;
+  min-height: 100px!important;
+}
+.view-animate {}
+.view-animate.ng-enter, .view-animate.ng-leave {
+  -webkit-transition: all cubic-bezier(0.250, 0.460, 0.450, 0.940) 1.5s;
+  transition: all cubic-bezier(0.250, 0.460, 0.450, 0.940) 1.5s;
+  display: block;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+.view-animate.ng-enter {
+  left: 100%;
+}
+.view-animate.ng-enter.ng-enter-active {
+  left: 0;
+}
+.view-animate.ng-leave.ng-leave-active {
+  left: -100%;
+}
+body {
+  overflow-x: hidden;
+}
+html {
+  overflow-x: hidden
+}
+
+/*body {
+background: #000;  Old browsers
+	margin: 0px auto;
+}*/
+
+.follow-btn {
+  position: fixed;
+}
+#btnMenu {
+  position: fixed;
+  margin-top: 5em;
+  right: 1em
+}
+#sidebar {
+  /* height:100%; */
+  background: #0c2f40;
+  position: fixed;
+  bottom: 0;
+  filter: alpha(opacity=70);
+  /* internet explorer */
+  -khtml-opacity: 0.7;
+  /* khtml, old safari */
+  -moz-opacity: 0.7;
+  /* mozilla, netscape */
+  opacity: 0.7;
+  /* fx, safari, opera */
+  padding:.6em;
+}
+#divTextHolder {
+  width: 200px;
+  top: auto;
+  right: 100px;
+  position: absolute;
+}
+
+/*#maximage * {
+	width:100%;
+	height: 100%;
+	margin: 0px auto;
+	border: 0px auto;
+	padding: 0px auto;
+}*/
+
+.wrapper, html, body {
+  width: 100%;
+  height: 100%;
+}
+.view-animate-container {
+  height: 100%;
+}

@@ -1,0 +1,131 @@
+<a data-action="toggle" id="btnMenu" class="btn-floating btn-large waves-effect waves-light"><i class="material-icons">more_horiz</i></a>
+<div id="sidebar">
+  <button type="button" id="btnSub">Subscribe original blog</button>
+  <button type="button" id="btnUnSub">Unsub blog</button>
+  <button type="button" id="btnPrev">Previous</button>
+  <button type="button" id="btnNext">Next</button>
+  <button type="button" id="btnPlayPause">Play/Pause</button>
+  <button type="button" id="btnLike">Like post</button>
+  <button type="button" id="btnReblog">Reblog post</button>
+  <input type="checkbox" id="cbShowCaption" checked="checked" />
+  <label for="cbShowCaption">Show captions</label>
+  <div id="slider" style="width:4em; display:inline-block;margin-left:1em"></div>
+  <label for="slider">Image size</label>
+</div>
+<script type="text/javascript">
+  var $sidebar = null;
+  var $btnUnsub = null;
+  var $btnSub = null;
+  var $btnLike = null;
+  var $btnReblog = null;
+  var $btnNext = null;
+  var $btnPrev = null;
+  var $btnPlayPause = null;
+  var $slider = null;
+  var slider = null;
+  var strIdSidebar = "#sidebar";
+  var strIdBtnUnsub = "#btnUnSub";
+  var strIdBtnSub = "#btnSub";
+  var strIdBtnLike = "#btnLike";
+  var strIdBtnReblog = "#btnReblog";
+  var strIdBtnNext = "#btnNext";
+  var strIdBtnPrev = "#btnPrev";
+  var strIdBtnPlayPause = "#btnPlayPause";
+  var strIdSlider = "#slider";
+  $(function() {
+    slider = new $("#sidebar").sidebar({
+      close: false,
+      side: "bottom"
+    });
+    $("#btnMenu").click(function() {
+      console.log("clicked sidebar button");
+      $("#sidebar").trigger("sidebar:toggle");
+      var left = $("#btnMenu").css("left");
+      var sidebarWidth = $("#sidebar").width();
+    });
+    $("#cbShowCaption").click(function() {
+      var cb = $(this);
+      if (cb.is(":checked")) {
+        $(".slide-caption").show();
+      } else {
+        $(".slide-caption").hide();
+      }
+    });
+    $slider = $(strIdSidebar);
+    $btnUnsub = $(strIdBtnUnsub);
+    $btnSub = $(strIdBtnSub);
+    $btnLike = $(strIdBtnLike);
+    $btnPrev = $(strIdBtnPrev);
+    $btnReblog = $(strIdBtnReblog);
+    $btnNext = $(strIdBtnNext);
+    $btnPlayPause = $(strIdBtnPlayPause);
+    $slider = $(strIdSlider);
+  });
+
+  $(strIdSlider).slider({
+    min: 1,
+    max: 5,
+    change: function(event, ui) {
+      var newValue = $slider.slider("value");
+      dataRetriever.imgScale = newValue;
+      //console.log("new img scale: ", imgScale);
+      scaleImage();
+    }
+  });
+  $(strIdBtnNext).click(function() {
+    $slideShow.rsfSlideshow('nextSlide');
+  });
+  $(strIdBtnPrev).click(function() {
+    $btnPrev.rsfSlideshow('previousSlide');
+  });
+  $(strIdBtnPlayPause).click(function() {
+    togglePlay();
+  });
+  $(strIdBtnReblog).click(function() {
+    reblogPost();
+  });
+  $(strIdBtnLike).click(function() {
+    likePost();
+  });
+  $(strIdBtnSub).click(function() {
+    subscribeToBlogger();
+  });
+  $(strIdBtnUnsub).hover(function() {
+    var blogName = dataRetriever.photoBlogArray[dataRetriever.slideNumber];
+    //console.log("blog to unsub: ", blogName);
+    if (blogName != undefined) {
+      $btnUnsub.notify("Unsubscribe user: " + blogName + ".", {
+        position: "right",
+        className: "info",
+        showDuration: 50
+      });
+    } else {
+      $btnUnsub.notify("No source found.", {
+        position: "right",
+        className: "info",
+        showDuration: 50
+      });
+    }
+  });
+  $(strIdBtnSub).hover(function() {
+    // console.log("tData posts",tData);
+    var blogName = dataRetriever.photoSourceArray[dataRetriever.slideNumber];
+    console.log("blog to sub: ", blogName);
+    if (typeof(blogName) != "undefined") {
+      $btnSub.notify("Subscribe user: " + blogName + ".", {
+        position: "right",
+        className: "info",
+        showDuration: 50
+      });
+    } else {
+      $btnSub.notify("No source found.", {
+        position: "right",
+        className: "info",
+        showDuration: 50
+      });
+    }
+  });
+  $(strIdBtnUnsub).click(function() {
+    unsubUser();
+  });
+</script>
