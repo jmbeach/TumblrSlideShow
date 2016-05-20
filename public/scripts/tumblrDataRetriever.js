@@ -32,6 +32,8 @@ function tumblrDataRetriever() {
             for (var j = 0; j < data.posts[i].photos.length; j++) {
                 var photo = data.posts[i].photos[j];
                 var url = photo.original_size.url;
+								var cache_image = $('<img src="'+url+'" style="display:none"/>');
+								$("body").append(cache_image);
                 var source = data.posts[i].source_title;
                 var blogName = data.posts[i].blog_name;
                 var id = data.posts[i].id;
