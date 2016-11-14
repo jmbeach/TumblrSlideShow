@@ -24,15 +24,18 @@ A Node.js application which displays photos from a tumblr user's dashboard as a 
    * `npm install`
 4. Add a file to the `config` folder named `default.json`. The contents should look something like the following:
 
-		{
-		  "Tumblr": {
-			"appKey": "<your-app-key>",
-			"appSecret": "<your-app-secret>"
-		  },
-		  "Debug": {
-			"port":<localhost-port-to-debug-on>
-		  }
-		}
+```js
+{
+	"Tumblr": {
+	"appKey": "<your-app-key>",
+	"appSecret": "<your-app-secret>"
+	},
+	"Debug": {
+	"port":<localhost-port-to-debug-on>
+	}
+}
+```
+
    * You will need to have your own Tumblr app-key and app-secret. This is not hard to do, just go to [Tumblr's app registration page](https://www.tumblr.com/oauth/register) and create a new app with any name you like, some sort of description and a callback url of `http:localhost/auth/tumblr/callback` and you'll be all set.
    * After you create it, you can view it's app key (really called OAuth Consumer Key) and it's secret key [here](https://www.tumblr.com/oauth/apps).
 4. Finally, run `node server.js` to start serving the app
