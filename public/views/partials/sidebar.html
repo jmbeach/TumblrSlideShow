@@ -75,17 +75,52 @@
   $(strIdBtnNext).click(function() {
     $slideShow.rsfSlideshow('nextSlide');
   });
+  $(strIdBtnNext).hover(function() {
+    $btnNext.notify("Hotkey: j", {
+      position: "right",
+      className: "info",
+      showDuration: 50
+    });
+  });
   $(strIdBtnPrev).click(function() {
     $btnPrev.rsfSlideshow('previousSlide');
+  });
+  $(strIdBtnPrev).hover(function() {
+    $btnPrev.notify("Hotkey: k", {
+      position: "right",
+      className: "info",
+      showDuration: 50
+    });
   });
   $(strIdBtnPlayPause).click(function() {
     togglePlay();
   });
+  $(strIdBtnPlayPause).hover(function() {
+    $btnPlayPause.notify("Hotkey: p", {
+      position: "right",
+      className: "info",
+      showDuration: 50
+    });
+  });
   $(strIdBtnReblog).click(function() {
     reblogPost();
   });
+  $(strIdBtnReblog).hover(function() {
+    $btnReblog.notify("Hotkey: ;", {
+      position: "right",
+      className: "info",
+      showDuration: 50
+    });
+  });
   $(strIdBtnLike).click(function() {
     likePost();
+  });
+  $(strIdBtnLike).hover(function() {
+    $btnLike.notify("Hotkey: l", {
+      position: "right",
+      className: "info",
+      showDuration: 50
+    });
   });
   $(strIdBtnSub).click(function() {
     subscribeToBlogger();
@@ -94,13 +129,13 @@
     var blogName = dataRetriever.photoBlogArray[dataRetriever.slideNumber];
     //console.log("blog to unsub: ", blogName);
     if (blogName != undefined) {
-      $btnUnsub.notify("Unsubscribe user: " + blogName + ".", {
+      $btnUnsub.notify("Unsubscribe user: " + blogName + ". (Hotkey: u)", {
         position: "right",
         className: "info",
         showDuration: 50
       });
     } else {
-      $btnUnsub.notify("No source found.", {
+      $btnUnsub.notify("No source found. (Hotkey: u)", {
         position: "right",
         className: "info",
         showDuration: 50
@@ -110,15 +145,14 @@
   $(strIdBtnSub).hover(function() {
     // console.log("tData posts",tData);
     var blogName = dataRetriever.photoSourceArray[dataRetriever.slideNumber];
-    console.log("blog to sub: ", blogName);
     if (typeof(blogName) != "undefined") {
-      $btnSub.notify("Subscribe user: " + blogName + ".", {
+      $btnSub.notify("Subscribe user: " + blogName + ". (Hotkey: h)", {
         position: "right",
         className: "info",
         showDuration: 50
       });
     } else {
-      $btnSub.notify("No source found.", {
+      $btnSub.notify("No source found. (Hotkey: h)", {
         position: "right",
         className: "info",
         showDuration: 50
