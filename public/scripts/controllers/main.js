@@ -1,5 +1,5 @@
 ﻿//#region DEFINITION
-var master = angular.module('master', ['ngRoute', 'ngAnimate', 'ui.router', 'vcRecaptcha']);
+var master = angular.module('master', ['ngRoute', 'ngAnimate', 'ui.router']);
 //#endregion
 
 // #region ROUTING

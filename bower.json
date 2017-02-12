@@ -21,7 +21,6 @@
   ],
   "dependencies": {
     "Materialize": "materialize#~0.97.5",
-    "jquery": "~2.1.4",
     "jquery-ui": "~1.11.4",
     "angular": "~1.4.3",
     "jquery-color": "~2.1.2",
@@ -29,12 +28,11 @@
     "angular-animate": "~1.4.3",
     "ui-router": "~0.2.15",
     "toastr": "~2.1.2",
-    "angular-recaptcha": "~2.2.5",
     "easing": "*",
-    "notifyjs": "notifyjs/notifyjs#^0.4.0",
+    "notifyjs": "notifyjs/notifyjs",
     "jquery.adaptive-backgrounds.js": "adaptive.background#^1.0.3",
-    "sweep": "^1.2.2",
-    "jquery-sidebar": "jillix/jQuery-sidebar#^3.3.2"
+    "jquery-sidebar": "jillix/jQuery-sidebar#^3.3.2",
+    "sweep": "https://github.com/rileyjshaw/sweep"
   },
   "resolutions": {
     "angular": "~1.4.3"
